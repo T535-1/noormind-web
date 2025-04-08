@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NoorMind</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="screen" id="main-screen">
+    <h1>NoorMind</h1>
+    <button onclick="switchScreen('meditation')">التأمل</button>
+    <button onclick="switchScreen('vr')">عوالم الواقع الافتراضي</button>
+    <button onclick="switchScreen('mood')">تحليل المزاج</button>
+  </div>
+
+  <div class="screen" id="meditation-screen" style="display:none;">
+    <h2>جلسات التأمل</h2>
+    <ul id="meditation-list"></ul>
+    <button onclick="switchScreen('main')">العودة</button>
+  </div>
+
+  <div class="screen" id="vr-screen" style="display:none;">
+    <h2>عوالم الواقع الافتراضي</h2>
+    <ul id="vr-list"></ul>
+    <button onclick="switchScreen('main')">العودة</button>
+  </div>
+
+  <div class="screen" id="mood-screen" style="display:none;">
+    <h2>كيف تشعر اليوم؟</h2>
+    <textarea id="mood-input" placeholder="صف مشاعرك..."></textarea>
+    <button onclick="analyzeMood()">تحليل</button>
+    <canvas id="mood-chart" height="100"></canvas>
+    <p id="mood-recommendation"></p>
+    <button onclick="switchScreen('main')">العودة</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

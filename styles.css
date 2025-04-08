@@ -1,0 +1,27 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f6f7;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+}
+
+button {
+  background-color: teal;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+textarea {
+  width: 80%;
+  height: 100px;
+  margin: 10px auto;
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+}
