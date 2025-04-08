@@ -3,39 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NoorMind</title>
+  <title>NoorMind Enlightenment AI</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="screen" id="main-screen">
-    <h1>NoorMind</h1>
-    <button onclick="switchScreen('meditation')">التأمل</button>
-    <button onclick="switchScreen('vr')">عوالم الواقع الافتراضي</button>
-    <button onclick="switchScreen('mood')">تحليل المزاج</button>
+    <h1>NoorMind AI – تجربة التنوير</h1>
+    <p>
+      تهدف هذه المنصة إلى استكشاف كيفية توظيف تقنيات الذكاء الاصطناعي والميتافيرس في تطوير وتعزيز العلاج بالتنوير، من خلال التأمل، وتحليل المزاج، وخلق عوالم افتراضية تدعم التجربة الروحية.
+    </p>
+    <button onclick="switchScreen('abstract')">📄 عرض الملخص</button>
+    <button onclick="switchScreen('meditation')">🧘 جلسات التأمل</button>
+    <button onclick="switchScreen('vr')">🌌 بيئات الواقع الافتراضي</button>
+    <button onclick="switchScreen('mood')">💬 تحليل المزاج</button>
+  </div>
+
+  <div class="screen" id="abstract-screen" style="display:none;">
+    <h2>Enlightenment Psychology in Light of AI and Metaverse Technologies</h2>
+    <p>
+      This paper aims to present a new vision of how Artificial Intelligence (AI) and Metaverse technologies can be employed to develop and enhance the methodology of Enlightenment Therapy, which includes enhancing mindfulness, invoking divine light, and deepening the sense of being in the presence of God...
+    </p>
+    <p>
+      The research concludes by providing future recommendations on how AI and Metaverse technologies can be developed to become more effective tools that support Enlightenment Therapy, while also considering ethical and religious aspects of these applications.
+    </p>
+    <p><strong>Keywords:</strong> Enlightenment Psychology, AI, Metaverse, Meditation, Spiritual Therapy, AR.</p>
+    <button onclick="switchScreen('main')">⬅ العودة</button>
   </div>
 
   <div class="screen" id="meditation-screen" style="display:none;">
-    <h2>جلسات التأمل</h2>
-    <ul id="meditation-list"></ul>
-    <button onclick="switchScreen('main')">العودة</button>
+    <h2>🧘 جلسات التأمل المدعومة بالذكاء الاصطناعي</h2>
+    <ul id="meditation-list">
+      <li>Breath Awareness – 5 mins</li>
+      <li>Spiritual Meditation – 7 mins</li>
+      <li>Deep Prayer – 10 mins</li>
+    </ul>
+    <button onclick="switchScreen('main')">⬅ العودة</button>
   </div>
 
   <div class="screen" id="vr-screen" style="display:none;">
-    <h2>عوالم الواقع الافتراضي</h2>
-    <ul id="vr-list"></ul>
-    <button onclick="switchScreen('main')">العودة</button>
+    <h2>🌌 بيئات التأمل الافتراضية</h2>
+    <ul id="vr-list">
+      <li>Forest of Awareness</li>
+      <li>Oasis of Serenity</li>
+      <li>Mountain of Light</li>
+    </ul>
+    <button onclick="switchScreen('main')">⬅ العودة</button>
   </div>
 
   <div class="screen" id="mood-screen" style="display:none;">
-    <h2>كيف تشعر اليوم؟</h2>
+    <h2>💬 تحليل المزاج الروحي</h2>
     <textarea id="mood-input" placeholder="صف مشاعرك..."></textarea>
     <button onclick="analyzeMood()">تحليل</button>
     <canvas id="mood-chart" height="100"></canvas>
     <p id="mood-recommendation"></p>
-    <button onclick="switchScreen('main')">العودة</button>
+    <button onclick="switchScreen('main')">⬅ العودة</button>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    function switchScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(el => el.style.display = 'none');
+      document.getElementById(screenId + '-screen').style.display = 'block';
+    }
+
+    let moodData = [];
+    function analyzeMood() {
+      const text = document.getElementById("mood-input").value.toLowerCase();
+      const positive = ["نور", "طمأنينة", "سلام", "رضا"];
+      const negative = ["قلق", "توتر", "خوف", "حزن"];
+      let score = 0;
+      positive.forEach(word => text.includes(word) ? score++ : null);
+      negative.forEach(word => text.includes(word) ? score-- : null);
+
+      moodData.push(score);
+      document.getElementById("mood-recommendation").innerText =
+        score > 0 ? "✨ حالتك إيجابية ومضيئة، ننصحك بجلسة تأمل روحي." :
+        score < 0 ? "🧘‍♂️ أنت بحاجة إلى تأمل مهدئ وبيئة هادئة." :
+        "🙂 حالتك متوازنة، استمر في مراقبة الذات.";
+
+      renderMoodChart();
+    }
+
+    function renderMoodChart() {
+      const ctx = document.getElementById("mood-chart").getContext("2d");
+      if (window.moodChart) window.moodChart.destroy();
+      window.moodChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: moodData.map((_, i) => i + 1),
+          datasets: [{
+            label: "مزاجك الروحي",
+            data: moodData,
+            borderColor: "teal",
+            backgroundColor: "rgba(0,128,128,0.2)",
+            tension: 0.3
+          }]
+        },
+        options: {scales: {y: {min: -3, max: 3}}}
+      });
+    }
+  </script>
 </body>
 </html>
