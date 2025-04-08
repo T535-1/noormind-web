@@ -9,51 +9,54 @@
 </head>
 <body>
   <div class="screen" id="main-screen">
-    <h1>NoorMind AI – تجربة التنوير</h1>
+    <h1>NoorMind AI – التنوير في ضوء الإسلام</h1>
     <p>
-      تهدف هذه المنصة إلى استكشاف كيفية توظيف تقنيات الذكاء الاصطناعي والميتافيرس في تطوير وتعزيز العلاج بالتنوير، من خلال التأمل، وتحليل المزاج، وخلق عوالم افتراضية تدعم التجربة الروحية.
+      تهدف هذه المنصة إلى تعزيز التنوير الروحي وفق الهدي الإسلامي، من خلال الذكر، محاسبة النفس، التأمل في خلق الله، وربط ذلك بتقنيات الذكاء الاصطناعي والميتافيرس لدعم الرحلة الروحية.
     </p>
-    <button onclick="switchScreen('abstract')">📄 عرض الملخص</button>
-    <button onclick="switchScreen('meditation')">🧘 جلسات التأمل</button>
-    <button onclick="switchScreen('vr')">🌌 بيئات الواقع الافتراضي</button>
-    <button onclick="switchScreen('mood')">💬 تحليل المزاج</button>
+    <button onclick="switchScreen('abstract')">📄 عرض المفاهيم</button>
+    <button onclick="switchScreen('meditation')">🧘 تمارين الذكر والتأمل</button>
+    <button onclick="switchScreen('vr')">🌌 مشاهد الطبيعة والتدبر</button>
+    <button onclick="switchScreen('mood')">💬 تحليل المزاج الروحي</button>
   </div>
 
   <div class="screen" id="abstract-screen" style="display:none;">
-    <h2>Enlightenment Psychology in Light of AI and Metaverse Technologies</h2>
-    <p>
-      This paper aims to present a new vision of how Artificial Intelligence (AI) and Metaverse technologies can be employed to develop and enhance the methodology of Enlightenment Therapy, which includes enhancing mindfulness, invoking divine light, and deepening the sense of being in the presence of God...
-    </p>
-    <p>
-      The research concludes by providing future recommendations on how AI and Metaverse technologies can be developed to become more effective tools that support Enlightenment Therapy, while also considering ethical and religious aspects of these applications.
-    </p>
-    <p><strong>Keywords:</strong> Enlightenment Psychology, AI, Metaverse, Meditation, Spiritual Therapy, AR.</p>
+    <h2>مفاهيم التنوير الإسلامي</h2>
+    <ul>
+      <li><strong>الذكر والخشوع:</strong> "ألا بذكر الله تطمئن القلوب"</li>
+      <li><strong>اليقظة الإيمانية:</strong> مراقبة الله في كل لحظة.</li>
+      <li><strong>محاسبة النفس:</strong> "بل الإنسان على نفسه بصيرة"</li>
+      <li><strong>الكتابة التعبدية:</strong> تفريغ المشاعر وكتابة الدعاء.</li>
+      <li><strong>تزكية النفس:</strong> التحرر من الكبر والهوى.</li>
+      <li><strong>التأمل في خلق الله:</strong> تدبر الكون كوسيلة للوصول إلى الله.</li>
+      <li><strong>التنفس مع الذكر:</strong> شهيق بـ"الله"، زفير بـ"أكبر".</li>
+      <li><strong>الخيال الإيماني:</strong> تخيل الجنة أو الوقوف بين يدي الله.</li>
+    </ul>
     <button onclick="switchScreen('main')">⬅ العودة</button>
   </div>
 
   <div class="screen" id="meditation-screen" style="display:none;">
-    <h2>🧘 جلسات التأمل المدعومة بالذكاء الاصطناعي</h2>
+    <h2>🧘 تمارين الذكر والتأمل الإسلامي</h2>
     <ul id="meditation-list">
-      <li>Breath Awareness – 5 mins</li>
-      <li>Spiritual Meditation – 7 mins</li>
-      <li>Deep Prayer – 10 mins</li>
+      <li>جلسة ذكر "سبحان الله" مع تنفس عميق – 5 دقائق</li>
+      <li>تأمل في آية من القرآن – 7 دقائق</li>
+      <li>دعاء خاشع في خلوة – 10 دقائق</li>
     </ul>
     <button onclick="switchScreen('main')">⬅ العودة</button>
   </div>
 
   <div class="screen" id="vr-screen" style="display:none;">
-    <h2>🌌 بيئات التأمل الافتراضية</h2>
+    <h2>🌌 مشاهد الطبيعة والتأمل في خلق الله</h2>
     <ul id="vr-list">
-      <li>Forest of Awareness</li>
-      <li>Oasis of Serenity</li>
-      <li>Mountain of Light</li>
+      <li>غابة السكينة – لتدبر خلق الأشجار والطير</li>
+      <li>واحة الطمأنينة – لتذكر نعيم الجنة</li>
+      <li>جبل النور – لاستحضار لحظة التأمل والاعتكاف</li>
     </ul>
     <button onclick="switchScreen('main')">⬅ العودة</button>
   </div>
 
   <div class="screen" id="mood-screen" style="display:none;">
     <h2>💬 تحليل المزاج الروحي</h2>
-    <textarea id="mood-input" placeholder="صف مشاعرك..."></textarea>
+    <textarea id="mood-input" placeholder="اكتب مشاعرك بصدق..."></textarea>
     <button onclick="analyzeMood()">تحليل</button>
     <canvas id="mood-chart" height="100"></canvas>
     <p id="mood-recommendation"></p>
@@ -69,17 +72,17 @@
     let moodData = [];
     function analyzeMood() {
       const text = document.getElementById("mood-input").value.toLowerCase();
-      const positive = ["نور", "طمأنينة", "سلام", "رضا"];
-      const negative = ["قلق", "توتر", "خوف", "حزن"];
+      const positive = ["طمأنينة", "رضا", "نور", "إيمان", "حب الله"];
+      const negative = ["قلق", "توتر", "ذنوب", "خوف", "غفلة"];
       let score = 0;
       positive.forEach(word => text.includes(word) ? score++ : null);
       negative.forEach(word => text.includes(word) ? score-- : null);
 
       moodData.push(score);
       document.getElementById("mood-recommendation").innerText =
-        score > 0 ? "✨ حالتك إيجابية ومضيئة، ننصحك بجلسة تأمل روحي." :
-        score < 0 ? "🧘‍♂️ أنت بحاجة إلى تأمل مهدئ وبيئة هادئة." :
-        "🙂 حالتك متوازنة، استمر في مراقبة الذات.";
+        score > 0 ? "🌟 حالتك طيبة، واصل الذكر والتدبر." :
+        score < 0 ? "🧘‍♂️ عد إلى الذكر وتب إلى الله لتطمئن." :
+        "🙂 حالتك متوازنة، استمر بمحاسبة النفس.";
 
       renderMoodChart();
     }
@@ -92,10 +95,10 @@
         data: {
           labels: moodData.map((_, i) => i + 1),
           datasets: [{
-            label: "مزاجك الروحي",
+            label: "المزاج الروحي",
             data: moodData,
-            borderColor: "teal",
-            backgroundColor: "rgba(0,128,128,0.2)",
+            borderColor: "green",
+            backgroundColor: "rgba(0,128,0,0.2)",
             tension: 0.3
           }]
         },
